@@ -3,7 +3,7 @@
     This is vuex test -- {{ this.getComments() }} -- Computed value = {{ comentsLength }} <br>
     {{ this.getData('hello') }}
     <br>  
-    <VuexTestSub :somedata="somedata"></VuexTestSub>
+    <VuexTestSub :somedata="somedata" @test-event="executeevent"></VuexTestSub>
   </div>
 </template>
 
@@ -65,7 +65,11 @@ export default {
      },
      somedata(param){
          return param || 'tested some data' ;
+     },
+     executeevent(param){
+        console.log(param) ;
      }
+
   },
   computed : {
         comentsLength(){

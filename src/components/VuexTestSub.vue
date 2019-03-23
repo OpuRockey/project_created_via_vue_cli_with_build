@@ -18,6 +18,7 @@ export default {
   },
   created(){
       console.log(this.somedata('tested data changed'));
+      this.$emit('testEvent' , 'hahaha');
   },
   methods : {
       getComments(){
