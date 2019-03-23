@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-        This is VuexTestSub {{ this.getComments() }}
+        This is VuexTestSub {{ this.getComments() }} -- {{ somedata() }}
         <router-link to="/">Home</router-link> |
   </div>
 </template>
@@ -14,7 +14,10 @@ export default {
       }
   },
   props: {
-    
+      somedata : Function
+  },
+  created(){
+      console.log(this.somedata('tested data changed'));
   },
   methods : {
       getComments(){

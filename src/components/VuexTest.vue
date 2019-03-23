@@ -3,7 +3,7 @@
     This is vuex test -- {{ this.getComments() }} -- Computed value = {{ comentsLength }} <br>
     {{ this.getData('hello') }}
     <br>  
-    <VuexTestSub></VuexTestSub>
+    <VuexTestSub :somedata="somedata"></VuexTestSub>
   </div>
 </template>
 
@@ -62,6 +62,9 @@ export default {
             self.comments = 'Local comments just changed';
             self.$store.dispatch('changeCommentsAction','Local comments changed the state');
         },7000)
+     },
+     somedata(param){
+         return param || 'tested some data' ;
      }
   },
   computed : {
