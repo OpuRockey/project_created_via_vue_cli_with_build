@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    This is vuex test -- {{ this.getComments() }}
+    This is vuex test -- {{ this.getComments() }} -- Computed value = {{ comentsLength }} <br>
+    {{ this.getData('hello') }}
     <br>  
     <VuexTestSub></VuexTestSub>
   </div>
@@ -9,9 +10,11 @@
 <script>
 
 import VuexTestSub from './VuexTestSub'
+import { mixin } from '../mixins/mixin'
 
 export default {
   name: 'VuexTest',
+  mixins : [mixin],
   props: {
     
   },
@@ -60,11 +63,19 @@ export default {
             self.$store.dispatch('changeCommentsAction','Local comments changed the state');
         },7000)
      }
+  },
+  computed : {
+        comentsLength(){
+          return this.comments.length ;
+      }
+  },
+  watch : {
+      comments(n,o){
+          console.log('New Value -is ', n);
+          console.log('Old Value -is ', o);
+      }
   }
 }
-
-//self.$store.dispatch('changeCommentsAction',counter);
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
